@@ -2,6 +2,9 @@
 
 A lightweight keyboard shortcut animation generator and embeddable widget.
 
+## Preview
+![Shortcut Anim Preview](./shortcut-anim-index.png)
+
 ## Features
 - Virtual keyboard renderer for Mac and Windows layouts
 - Record key sequences or manually input them
