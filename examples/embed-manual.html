@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>kbd-mini manual mount</title>
+
+<div id="mount-here"></div>
+
+<link rel="stylesheet" href="../dist/kbd-mini.css">
+
+<script>window.KBD_MINI_NO_AUTO = true;</script>
+<script src="../dist/kbd-mini.js"></script>
+
+<script>
+  const el = document.getElementById('mount-here');
+  el.className = 'kbd-mini';
+  KbdMini.mount(el, { os: 'mac', seq: ['control','shift','s'] });
+</script>

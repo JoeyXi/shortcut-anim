@@ -1,0 +1,17 @@
+{
+  "name": "shortcut-anim",
+  "version": "0.1.0",
+  "description": "Keyboard shortcut animation generator and embed widget",
+  "main": "dist/kbd-mini.js",
+  "scripts": {
+    "build": "echo 'Build script placeholder'"
+  },
+  "keywords": [
+    "keyboard",
+    "shortcut",
+    "animation",
+    "embed"
+  ],
+  "author": "JoeyXi",
+  "license": "MIT"
+}

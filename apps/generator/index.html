@@ -1,0 +1,93 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Shortcut Animation Generator</title>
+<link rel="stylesheet" href="generator.css" />
+
+<div class="page">
+  <header class="header">
+    <div class="title">
+      <h1>Shortcut Animation Generator</h1>
+      <p>Create, preview and export autoplay shortcut animations for Mac & Windows.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="tool-field">
+        <label for="os">System</label>
+        <select id="os">
+          <option value="auto">Auto</option>
+          <option value="mac">Mac</option>
+          <option value="win">Windows</option>
+        </select>
+      </div>
+
+      <div class="tool-buttons">
+        <button id="recordStart">Start</button>
+        <button id="recordStop" disabled>Stop & Apply</button>
+        <span class="divider"></span>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <span class="divider"></span>
+        <div class="speed">
+          <label for="speed">Speed</label>
+          <input id="speed" type="range" min="0.5" max="2" step="0.1" value="1" />
+        </div>
+        <span class="divider"></span>
+        <button id="clear" class="ghost">Clear</button>
+        <button id="emit" class="primary">Generate Embed</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-main">
+      <div class="panel-head">
+        <h3>Virtual Keyboard (Full)</h3>
+        <p class="sub">Live preview of your keys. Hover speed to fine-tune motion.</p>
+      </div>
+      <div class="kb-stage">
+        <div id="kb"></div>
+      </div>
+    </section>
+
+    <aside class="panel panel-aside">
+      <div class="panel-head">
+        <h3>Key Sequence</h3>
+        <p class="sub">Type manually or record from your keyboard.</p>
+      </div>
+
+      <div class="field">
+        <textarea id="seq" class="mono" placeholder="Supports: control + shift + s  /  ctrl,shift,s  /  ⌃ ⇧ s"></textarea>
+        <div id="err" class="error" style="display:none"></div>
+        <p class="hint">
+          Aliases: <code>ctrl</code>=control, <code>option</code>=alt, <code>cmd</code>/<code>⌘</code>=command,
+          <code>⇧</code>=shift, <code>⌃</code>=control.
+          URL param: <code>?keys=control,shift,s</code>
+        </p>
+        <div class="actions">
+          <button id="apply">Apply Input</button>
+        </div>
+      </div>
+
+      <div class="panel-head mt">
+        <h3>Embed Code</h3>
+        <p class="sub">Click “Generate Embed”, then copy the widget snippet.</p>
+      </div>
+      <div class="field">
+        <textarea id="embed" class="mono" placeholder="Your embeddable widget code will appear here…" style="min-height:220px"></textarea>
+        <div class="actions">
+          <button id="copyEmbed" class="ghost">Copy Embed Code</button>
+        </div>
+      </div>
+
+      <div class="foot-hint">
+        <p>Tip: The embed widget auto-detects OS (set <code>data-os="auto"</code>), or force it with <code>mac</code>/<code>win</code>.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-foot">
+    <span>© 2025 Shortcut Anim • MIT License</span>
+  </footer>
+</div>
+
+<script src="generator.js"></script>
