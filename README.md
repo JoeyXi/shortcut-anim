@@ -4,6 +4,7 @@ A lightweight keyboard shortcut animation generator and embeddable widget.
 
 ## Preview
 ![Shortcut Anim Preview](./shortcut-anim-index.png)
+![Shortcut Anim GIF](./shortcut-anim-gif.gif)
 
 ## Features
 - Virtual keyboard renderer for Mac and Windows layouts
