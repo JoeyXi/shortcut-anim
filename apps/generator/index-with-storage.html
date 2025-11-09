@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8" />
-<title>Shortcut Animation Generator</title>
+<title>Shortcut Animation Generator (with Storage)</title>
 <link rel="stylesheet" href="generator.css" />
 
 <div class="page">
@@ -57,7 +57,7 @@
       
       <div class="field">
 			  <label for="label">Label</label>
-			  <input id="label" type="text" class="mono" placeholder="e.g. 快速保存" value="快速保存" />
+			  <input id="label" type="text" class="mono" placeholder="e.g. Quick Save" value="Quick Save" />
 			</div>
 
       <div class="field">
@@ -75,7 +75,8 @@
 
       <div class="panel-head mt">
         <h3>Embed Code</h3>
-        <p class="sub">Click “Generate Embed”, then copy the widget snippet.</p>
+        <p class="sub">Click "Generate Embed", then copy the widget snippet. <strong>This version includes localStorage support for saving minimize/expand state.</strong></p>
+        <p class="sub" style="margin-top:4px;color:#00c2ff;">✨ <strong>Auto OS Detection:</strong> Select "Auto" in System dropdown to automatically detect Mac/Windows and show the correct keyboard layout.</p>
       </div>
       <div class="field">
         <textarea id="embed" class="mono" placeholder="Your embeddable widget code will appear here…" style="min-height:220px"></textarea>
@@ -86,6 +87,7 @@
 
       <div class="foot-hint">
         <p>Tip: The embed widget auto-detects OS (set <code>data-os="auto"</code>), or force it with <code>mac</code>/<code>win</code>.</p>
+        <p style="margin-top:8px;color:#00c2ff;"><strong>✨ New:</strong> Minimize/expand state is now saved to browser localStorage and restored on page reload.</p>
       </div>
     </aside>
   </main>
@@ -95,4 +97,5 @@
   </footer>
 </div>
 
-<script src="generator.js"></script>
+<script src="generator-with-storage.js"></script>
+

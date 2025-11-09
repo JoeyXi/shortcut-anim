@@ -1,4 +1,3 @@
-/* ============  ============ */
 :root{
   --bg: #0b0e13;
   --card: #0f1115;
@@ -18,12 +17,10 @@
   --kbd-stroke: #20242a;
 }
 
-/* ============  ============ */
 *{box-sizing:border-box}
 html,body{margin:0; background:var(--bg); color:var(--text); font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial}
 .page{max-width:1200px; margin:32px auto 48px; padding:0 20px}
 
-/* ============  ============ */
 .header{
   background:var(--card);
   border-radius:16px;
@@ -58,7 +55,6 @@ html,body{margin:0; background:var(--bg); color:var(--text); font:14px/1.5 syste
 .tool-buttons .speed label{color:var(--muted)}
 .tool-buttons input[type=range]{width:160px}
 
-/* ============  ============ */
 .layout{
   display:grid;
   grid-template-columns: minmax(520px, 1fr) 360px;
@@ -76,14 +72,14 @@ html,body{margin:0; background:var(--bg); color:var(--text); font:14px/1.5 syste
 .panel-aside{position:sticky; top:104px; height:fit-content}
 .mt{margin-top:12px}
 
-/*  */
+
 .kb-stage{
   margin-top:8px; padding:12px;
   background:#0c0f14; border-radius:14px; border:1px solid var(--line);
   overflow:auto;
 }
 
-/* ============  ============ */
+
 .field{margin-top:12px}
 textarea{
   width:100%; min-height:56px; resize:vertical;
@@ -104,10 +100,10 @@ textarea.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .foot-hint{margin-top:10px; color:var(--muted); font-size:12px}
 .foot-hint code{padding:2px 6px; border:1px solid var(--line); border-radius:8px; background:#0c1016}
 
-/* ============  ============ */
+
 .site-foot{margin-top:16px; color:var(--muted); text-align:center; font-size:12px}
 
-/* ============  ============ */
+
 .row{display:flex; gap:8px; margin:8px 0}
 .key{
   width:64px; height:56px; border-radius:12px;
@@ -119,3 +115,14 @@ textarea.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .pulse{animation:pulse 1.1s ease-in-out infinite}
 @keyframes pulse{0%,100%{filter:drop-shadow(0 0 0 rgba(90,59,255,0))}50%{filter:drop-shadow(0 0 14px rgba(90,59,255,.45))}}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+.mono {
+  width: 100%;
+  padding: 8px;
+  font-family: monospace, monospace;
+  background: #0f1115;
+  border: 1px solid #2a2f39;
+  border-radius: 6px;
+  color: #e9eeff;
+  resize: none;
+}

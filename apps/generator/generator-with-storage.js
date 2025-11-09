@@ -251,10 +251,13 @@ function makeEmbedHTML(tokens, os){
   var js =
     '(function(){' +
     'var mini=document.currentScript.previousElementSibling; var wrap=mini&&mini.parentElement; if(!mini||!wrap){console.error("[kbd-mini] host not found");return;}' +
-    'var host=mini; var osAttr=host.getAttribute("data-os")||"auto"; var os=(osAttr==="auto")?(/Mac/i.test(navigator.userAgent)?"mac":(/Windows/i.test(navigator.userAgent)?"win":"mac")):osAttr;' +
+    'var host=mini; var osAttr=host.getAttribute("data-os")||"auto";' +
+    'function detectOS(){var ua=navigator.userAgent||""; if(/Mac|iPhone|iPad|iPod/i.test(ua))return "mac"; if(/Win/i.test(ua))return "win"; if(/Linux/i.test(ua))return "win"; return "mac";}' +
+    'var os=(osAttr==="auto")?detectOS():osAttr;' +
     'var seq=(host.getAttribute("data-seq")||"").split(",").map(function(s){return (s||"").trim().toLowerCase();}).filter(Boolean);' +
     'var vw=parseInt(host.getAttribute("data-w")||"260",10); var vh=parseInt(host.getAttribute("data-h")||"140",10); var interval=Math.max(250,parseInt(host.getAttribute("data-interval")||"' + intervalMs + '",10));' +
     'var label=(host.getAttribute("data-label")||"");' +
+    'var storageKey="kbd-mini-state-"+seq.join(",")+(label?"-"+label:"");' +
     'var viewport=document.createElement("div"); viewport.className="viewport"; viewport.style.width=vw+"px"; viewport.style.height=vh+"px"; host.appendChild(viewport);' +
     'var caption=document.createElement("div"); caption.className="caption"; host.appendChild(caption);' +
     'var btn=document.createElement("div"); btn.className="btn"; btn.setAttribute("role","button"); btn.title="Minimize";' +
@@ -277,8 +280,9 @@ function makeEmbedHTML(tokens, os){
     'function play(){ if(timer||!els.length)return; step(); timer=setInterval(step, interval); }' +
     'play();' +
     'var pill=document.createElement("div"); pill.className="kbd-pill"; var seqPretty=seq.map(prettyLabel).join(" + "); pill.textContent=(label?label+" ":"")+seqPretty; wrap.appendChild(pill);' +
-    'function minimize(){ wrap.classList.add("minimized"); btn.innerHTML=iconExpand; btn.title="Restore"; }' +
-    'function restore(){ wrap.classList.remove("minimized"); btn.innerHTML=iconMinus; btn.title="Minimize"; }' +
+    'function minimize(){ wrap.classList.add("minimized"); btn.innerHTML=iconExpand; btn.title="Restore"; try{localStorage.setItem(storageKey,"minimized");}catch(e){}}' +
+    'function restore(){ wrap.classList.remove("minimized"); btn.innerHTML=iconMinus; btn.title="Minimize"; try{localStorage.setItem(storageKey,"expanded");}catch(e){}}' +
+    'try{var savedState=localStorage.getItem(storageKey); if(savedState==="minimized"){wrap.classList.add("minimized"); btn.innerHTML=iconExpand; btn.title="Restore";}else{wrap.classList.remove("minimized"); btn.innerHTML=iconMinus; btn.title="Minimize";}}catch(e){}' +
     'btn.addEventListener("click",function(){ if(wrap.classList.contains("minimized")) restore(); else minimize(); });' +
     'pill.addEventListener("click",restore);' +
     '})();';
@@ -302,7 +306,9 @@ $('#emit').onclick = () => {
     alert('Please record or enter a key sequence.');
     return;
   }
-  embedBox.value = makeEmbedHTML(tokens, currentOS);
+  // If "auto" is selected, generate auto-detection code; otherwise use the user's selected value
+  const selectedOS = osSel.value === 'auto' ? 'auto' : currentOS;
+  embedBox.value = makeEmbedHTML(tokens, selectedOS);
 };
 $('#copyEmbed').onclick = () => {
   embedBox.select();
@@ -315,3 +321,4 @@ $('#copyEmbed').onclick = () => {
   seqBox.value = urlKeys || (currentOS === 'mac' ? 'control + shift + s' : 'ctrl + shift + s');
   setSequence(parseSeq(seqBox.value));
 })();
+
