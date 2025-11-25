@@ -13,6 +13,7 @@ A lightweight keyboard shortcut animation generator and embeddable widget.
 - Export as embeddable widget (HTML snippet)
 - **Auto OS detection** - Automatically detects Mac/Windows and shows the correct keyboard layout
 - **State persistence** - Saves minimize/expand state to localStorage (v0.2.0+)
+- **Layout controls & live preview** - Pick preset positions, custom sizes, enable dragging, and see the widget inside a mock page before exporting (v0.3.0+)
 - OS adaptive (Mac / Windows / Linux)
 
 ## Usage
@@ -22,8 +23,8 @@ A lightweight keyboard shortcut animation generator and embeddable widget.
 You can use the prebuilt embed widget via CDN:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JoeyXi/shortcut-anim@v0.2.0/dist/kbd-mini.css">
-<script src="https://cdn.jsdelivr.net/gh/JoeyXi/shortcut-anim@v0.2.0/dist/kbd-mini.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JoeyXi/shortcut-anim@v0.3.0/dist/kbd-mini.css">
+<script src="https://cdn.jsdelivr.net/gh/JoeyXi/shortcut-anim@v0.3.0/dist/kbd-mini.js"></script>
 <div class="kbd-mini" data-os="auto" data-seq="control,shift,s"></div>
 ```
 
@@ -65,6 +66,13 @@ open apps/generator/index.html
 - `examples/embed-with-storage.html` - Example with localStorage and auto OS detection
 
 ## Changelog
+
+### v0.3.0
+- ✨ Added position presets (corners, edges, center) and custom width/height controls in the generator
+- ✨ Optional free-drag mode with auto-saved position for the embed widget
+- ✨ Live 16:9 preview canvas that renders the generated embed instantly for quick QA
+- 🌐 Updated generator UI copy to English for international users
+- 🛠️ Improved embed script so drag coordinates stay within view and preview state resets between generations
 
 ### v0.2.0
 - ✨ Added localStorage support for saving minimize/expand state

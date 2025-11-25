@@ -47,6 +47,17 @@
       <div class="kb-stage">
         <div id="kb"></div>
       </div>
+
+      <div class="panel-head mt">
+        <h3>Live Embed Preview</h3>
+        <p class="sub">After clicking "Generate Embed", the widget renders below inside a 16:9 mock webpage.</p>
+      </div>
+      <div class="preview-area">
+        <div class="preview-canvas">
+          <div id="embedPreviewEmpty" class="preview-empty">Generate an embed to see the live preview here.</div>
+          <iframe id="embedPreviewFrame" title="Shortcut Embed Preview"></iframe>
+        </div>
+      </div>
     </section>
 
     <aside class="panel panel-aside">
@@ -71,6 +82,47 @@
         <div class="actions">
           <button id="apply">Apply Input</button>
         </div>
+      </div>
+
+      <div class="panel-head mt">
+        <h3>Widget Layout & Size</h3>
+        <p class="sub">Choose a preset position, toggle free dragging, and fine-tune the mini keyboard size.</p>
+      </div>
+
+      <div class="field">
+        <label for="widgetPosition">Position preset</label>
+        <select id="widgetPosition">
+          <option value="top-left">Top Left</option>
+          <option value="top-center">Top Center</option>
+          <option value="top-right">Top Right</option>
+          <option value="left-middle">Left Middle</option>
+          <option value="right-middle">Right Middle</option>
+          <option value="bottom-left" selected>Bottom Left</option>
+          <option value="bottom-center">Bottom Center</option>
+          <option value="bottom-right">Bottom Right</option>
+        </select>
+      </div>
+
+      <div class="field size-field">
+        <label>Widget size (px)</label>
+        <div class="size-inputs">
+          <label>
+            Width
+            <input id="widgetWidth" type="number" min="180" max="520" step="10" value="260" />
+          </label>
+          <label>
+            Height
+            <input id="widgetHeight" type="number" min="160" max="520" step="10" value="260" />
+          </label>
+        </div>
+        <p class="hint">Default 260 × 260. Adjust to fit your layout.</p>
+      </div>
+
+      <div class="field checkbox">
+        <label class="check">
+          <input id="widgetDraggable" type="checkbox" />
+          <span>Allow free dragging (auto-saves last position)</span>
+        </label>
       </div>
 
       <div class="panel-head mt">
